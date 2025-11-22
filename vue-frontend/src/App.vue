@@ -1,6 +1,7 @@
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
+import ToDoList from "@/components/ToDoList.vue";
 </script>
 
 <template>
@@ -11,10 +12,10 @@ import TheWelcome from './components/TheWelcome.vue'
       <HelloWorld msg="You did it!" />
     </div>
   </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <div class="container">
+    <h1>Meine To-Do Liste</h1>
+    <ToDoList />
+  </div>
 </template>
 
 <style scoped>
