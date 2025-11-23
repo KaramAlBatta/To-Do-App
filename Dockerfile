@@ -3,5 +3,6 @@ WORKDIR /app
 COPY . .
 RUN chmod +x gradlew
 RUN ./gradlew build -x test
+RUN ls -lah build/libs/
 EXPOSE 8080
 CMD ["java", "-jar", "build/libs/webtech-0.0.1-SNAPSHOT.jar"]
