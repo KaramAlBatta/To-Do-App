@@ -4,7 +4,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "https://to-do-app-1-l2tv.onrender.com")
+@CrossOrigin(
+        origins = "https://to-do-app-1-l2tv.onrender.com",
+        methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.OPTIONS }
+)
 public class ToDoController {
 
     private final ToDoRepository repo;
@@ -15,11 +18,11 @@ public class ToDoController {
 
     @GetMapping("/api/todos")
     public List<ToDo> getAllToDos() {
-        return repo.findAll();          // liest aus DB
+        return repo.findAll();
     }
 
     @PostMapping("/api/todos")
     public ToDo createToDo(@RequestBody ToDo todo) {
-        return repo.save(todo);         // speichert in DB
+        return repo.save(todo);
     }
 }
