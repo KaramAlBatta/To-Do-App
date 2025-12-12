@@ -1,27 +1,26 @@
 package To_Do_Liste.webtech;
 
+import jakarta.persistence.*;
+
+@Entity
 public class ToDo {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String text;
     private boolean done;
 
-    public ToDo() {
-        // Leerer Konstruktor (wichtig für JSON-Serialisierung)
-    }
+    public ToDo() {}
 
-    public ToDo(Long id, String text, boolean done) {
-        this.id = id;
+    public ToDo(String text, boolean done) {
         this.text = text;
         this.done = done;
     }
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getText() {
