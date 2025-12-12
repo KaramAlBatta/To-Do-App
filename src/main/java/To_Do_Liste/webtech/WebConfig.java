@@ -15,10 +15,12 @@ public class WebConfig {
             public void addCorsMappings(CorsRegistry registry) {
 
                 registry.addMapping("/**")
-                        .allowedOrigins("https://to-do-app-1-l2tv.onrender.com")
+                        .allowedOrigins(
+                                "https://to-do-app-1-l2tv.onrender.com", // ← dein FRONTEND!
+                                "http://localhost:5173"
+                        )
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                        .allowedHeaders("*")
-                        .allowCredentials(false);
+                        .allowedHeaders("*");
             }
         };
     }
