@@ -4,7 +4,7 @@ import { ref, onMounted } from 'vue'
 const todos = ref([])
 
 onMounted(async () => {
-  const response = await fetch('http://localhost:8080/api/todos')
+  const response = await fetch('https://to-do-app-bhcc.onrender.com/api/todos')
   todos.value = await response.json()
 })
 </script>
