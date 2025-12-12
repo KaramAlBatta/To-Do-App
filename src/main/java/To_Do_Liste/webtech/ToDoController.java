@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173") // Vue-Frontend erlauben
+@CrossOrigin(origins = "https://to-do-app-1-l2tv.onrender.com") // Vue-Frontend erlauben
 public class ToDoController {
 
     @GetMapping("/api/todos")
