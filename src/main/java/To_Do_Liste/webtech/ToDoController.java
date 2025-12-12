@@ -5,9 +5,12 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(
-        origins = "https://to-do-app-1-l2tv.onrender.com",
+        origins = {
+                "https://to-do-app-bhcc.onrender.com"
+        },
         methods = { RequestMethod.GET, RequestMethod.POST, RequestMethod.OPTIONS }
 )
+
 public class ToDoController {
 
     private final ToDoRepository repo;
