@@ -1,87 +1,44 @@
-<script setup>
-import { ref, onMounted } from 'vue'
-
-const todos = ref([])
-const newText = ref('')
-
-async function loadTodos() {
-  const response = await fetch('https://to-do-app-bhcc.onrender.com/api/todos')
-  todos.value = await response.json()
-}
-
-async function addTodo() {
-  if (!newText.value.trim()) return
-
-  const response = await fetch('https://to-do-app-bhcc.onrender.com/api/todos', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      text: newText.value,
-      done: false
-    })
-  })
-
-  const saved = await response.json()
-  todos.value.push(saved)
-  newText.value = ''
-}
-
-onMounted(loadTodos)
-</script>
-
 <template>
-  <div class="todo">
-    <form @submit.prevent="addTodo" class="todo-form">
-      <input v-model="newText" placeholder="Neues ToDo" />
-      <button type="submit">Hinzufügen</button>
-    </form>
-
-    <ul class="todo-list">
-      <li v-for="todo in todos" :key="todo.id">
-        <label>
-          <input type="checkbox" v-model="todo.done" />
-          <span :class="{ done: todo.done }">{{ todo.text }}</span>
-        </label>
-      </li>
-    </ul>
+  <div class="page">
+    <div class="card">
+      <h1>Meine To-Do Liste</h1>
+      <p class="subtitle">Einträge hinzufügen, abhaken und verwalten.</p>
+      <ToDoList />
+    </div>
   </div>
 </template>
 
+<script setup>
+import ToDoList from './components/ToDoList.vue'
+</script>
+
 <style scoped>
-.todo {
-  max-width: 400px;
-}
-
-.todo-form {
+.page {
+  min-height: 100vh;
   display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  align-items: center;
+  justify-content: center;
+  background: #f3f4f6;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
-.todo-form input {
-  flex: 1;
-  padding: 0.4rem 0.6rem;
+.card {
+  width: 100%;
+  max-width: 520px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.8rem 2rem 2rem;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.12);
 }
 
-.todo-form button {
-  padding: 0.4rem 0.8rem;
-  cursor: pointer;
+h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.6rem;
 }
 
-.todo-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.todo-list li {
-  margin: 0.4rem 0;
-}
-
-.done {
-  text-decoration: line-through;
-  color: #666;
+.subtitle {
+  margin: 0 0 1.2rem;
+  color: #6b7280;
+  font-size: 0.9rem;
 }
 </style>
