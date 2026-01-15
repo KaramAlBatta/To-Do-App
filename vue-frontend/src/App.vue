@@ -37,20 +37,20 @@ import ToDoList from './components/ToDoList.vue'
   --muted: rgba(255, 255, 255, 0.70);
   --muted2: rgba(255, 255, 255, 0.55);
   --shadow: 0 18px 70px rgba(0, 0, 0, 0.45);
-  --ring: 0 0 0 4px rgba(99, 102, 241, 0.25);
 
   min-height: 100vh;
-  display: grid;
-  place-items: center;
-  padding: 28px 16px;
+  width: 100%;
+  display: flex;
+  align-items: center;        /* ← vertikal zentriert */
+  justify-content: center;    /* ← horizontal zentriert */
+  padding: 0;                 /* ← kein Offset mehr */
+
   color: var(--text);
   background:
       radial-gradient(1200px 600px at 20% 10%, rgba(99, 102, 241, 0.35), transparent 60%),
       radial-gradient(900px 500px at 90% 20%, rgba(16, 185, 129, 0.25), transparent 65%),
       radial-gradient(900px 500px at 50% 95%, rgba(236, 72, 153, 0.20), transparent 55%),
       linear-gradient(180deg, #070a14, var(--bg));
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji",
-  "Segoe UI Emoji";
   overflow: hidden;
 }
 
@@ -85,11 +85,11 @@ import ToDoList from './components/ToDoList.vue'
 }
 
 .shell {
-  width: 100%;
   max-width: 720px;
-  position: relative;
-  z-index: 1;
+  width: 100%;
+  transform: translateY(-2vh);
 }
+
 
 .header {
   margin: 0 0 14px;
