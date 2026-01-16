@@ -16,7 +16,7 @@
       </section>
 
       <footer class="footer">
-        <span class="dot" /> <span>Tipp: Enter zum Hinzufügen</span>
+        <span class="dot" /> <span>Tipp: To-Do anklicken, um es zu erledigen</span>
       </footer>
     </main>
   </div>
